@@ -60,33 +60,19 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v6
         with:
+          context: .
           file: ./Dockerfile
           push: true
           tags: >
             ibrakadijbra13/service-a:latest,
             ibrakadijbra13/service-a:${{ github.sha }}
 
-  docker_build_push:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download JAR artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: built-jar
-          path: target
-          
-
-          
-      - name: Debug target directory
-        run: ls -R
-        
       
            
   deploy_infrastructure:
     runs-on: ubuntu-latest
     if: github.event.inputs.environment == 'production'
-    needs: docker_build_push
+    needs: build
     steps:
       - name: Deploy ARM template
         run: |
@@ -98,7 +84,7 @@ jobs:
 
   deploy_to_kubernetes:
     runs-on: ubuntu-latest
-    needs: [docker_build_push, deploy_infrastructure]
+    needs: [build, deploy_infrastructure]
     steps:
       - name: Deploy to Kubernetes
         run: |
