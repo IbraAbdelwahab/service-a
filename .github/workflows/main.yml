@@ -38,12 +38,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and Push Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context:
-          push: true
-          tags: IbraAbdelwahab/service-a:latest
+      - name: Build Docker image
+        run: docker build ./ -t IbraAbdelwahab/service-a:latest
+
+      - name: Push Image
+        run: docker push IbraAbdelwahab/service-a:latest
 
   deploy_infrastructure:
     runs-on: ubuntu-latest
