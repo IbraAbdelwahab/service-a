@@ -39,11 +39,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build ./ -t IbraAbdelwahab/service-a:latest
-
-      - name: Push Image
-        run: docker push IbraAbdelwahab/service-a:latest
-
+        uses: docker/build-push-action@v6
+        with:
+          file: ./Dockerfile
+           
   deploy_infrastructure:
     runs-on: ubuntu-latest
     if: github.event.inputs.environment == 'production'
