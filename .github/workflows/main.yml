@@ -28,6 +28,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -DskipTests
 
+      - name: Package Maven
+        run: mvn clean package
+
+      - name: check directory
+        run: ls -al target
+
   docker_build_push:
     runs-on: ubuntu-latest
     needs: build
