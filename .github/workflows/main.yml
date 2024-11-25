@@ -39,7 +39,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build ./ -t IbraAbdelwahab/service-a:latest
+        run: docker build . --file Dockerfile --tag service-a:latest
 
       - name: Push Image
         run: docker push IbraAbdelwahab/service-a:latest
