@@ -42,6 +42,10 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           file: ./Dockerfile
+          push: true
+          tags: >
+            ibrakadijbra13/service-a:latest,
+            ibrakadijbra13/service-a:${{ github.sha }}
            
   deploy_infrastructure:
     runs-on: ubuntu-latest
