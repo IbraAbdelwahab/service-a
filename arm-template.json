@@ -9,7 +9,7 @@
       "identity": {
         "type": "SystemAssigned"
       },
-      "location": "italynorth",
+      "location": "eastus",
       "properties": {
         "kubernetesVersion": "1.29.9",
         "dnsPrefix": "aksdns",
