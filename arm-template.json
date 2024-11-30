@@ -11,7 +11,7 @@
       },
       "location": "italynorth",
       "properties": {
-        "kubernetesVersion": "1.29.10",
+        "kubernetesVersion": "1.29.9",
         "dnsPrefix": "aksdns",
         "agentPoolProfiles": [
           {
