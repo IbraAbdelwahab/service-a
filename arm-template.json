@@ -17,7 +17,7 @@
           {
             "name": "agentpool",
             "count": 2,
-            "vmSize": "standard_b16pls_v2",
+            "vmSize": "standard_b2ps_v2",
             "mode" : "System"
           }
         ],
