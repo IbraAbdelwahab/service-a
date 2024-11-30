@@ -124,11 +124,11 @@ jobs:
               cluster-name: ${{ env.ClusterName }}
               resource-group:  ${{ env.ResourceGroupName }}
 
-        - uses: Azure/k8s-create-secret@v4
-          with:
-              container-registry-username: ${{ secrets.DOCKER_USERNAME }}
-              container-registry-password: ${{ secrets.DOCKER_PASSWORD }}
-              secret-name: demo-k8s-secret
+        # - uses: Azure/k8s-create-secret@v4
+        #   with:
+        #       container-registry-username: ${{ secrets.DOCKER_USERNAME }}
+        #       container-registry-password: ${{ secrets.DOCKER_PASSWORD }}
+        #       secret-name: demo-k8s-secret
 
         - uses: Azure/k8s-deploy@v5
           with:
