@@ -66,22 +66,32 @@ jobs:
           tags: >
             ibrakadijbra13/service-a:latest,
             ibrakadijbra13/service-a:${{ github.sha }}
-
       
            
   deploy_infrastructure:
     runs-on: ubuntu-latest
     if: github.event.inputs.environment == 'production'
     needs: build
+    env:
+      ResourceGroupName: github-action-arm-rg
+      ResourceGroupLocation: "italynorth"
     steps:
-      - name: Deploy ARM template
-        run: |
-          az group create --name ${{ secrets.RESOURCE_GROUP }} --location "East US"
-          az deployment group create \
-            --resource-group ${{ secrets.RESOURCE_GROUP }} \
-            --template-file path/to/your/arm-template.json \
-            --parameters @path/to/parameters.json
-
+    - uses: actions/checkout@master
+    - uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZ_CREDS}}
+    - uses: Azure/CLI@v2
+      with:
+        inlineScript: |
+          #!/bin/bash
+          az group create --name ${{ env.ResourceGroupName }} --location ${{ env.ResourceGroupLocation }}
+          echo "Azure resource group created"
+    - uses: azure/arm-deploy@v2
+      with:
+        resourceGroupName: ${{ env.ResourceGroupName }}
+        template: ./arm-template.json
+        parameters: storageAccountType=Standard_LRS
+        
   deploy_to_kubernetes:
     runs-on: ubuntu-latest
     needs: [build, deploy_infrastructure]
