@@ -79,7 +79,9 @@ jobs:
     - uses: actions/checkout@master
     - uses: azure/login@v2
       with:
-        creds: ${{ secrets.AZ_CREDS}}
+        client-id: ${ {secrets.AZ_APPID }}
+        tenant-id: ${{ secrets.AZ_TENANT }}
+        subscription-id: ${{ secrets.AZ_SUB }}
     - uses: Azure/CLI@v2
       with:
         inlineScript: |
