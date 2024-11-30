@@ -135,6 +135,7 @@ jobs:
 
         - uses: Azure/k8s-create-secret@v4
           with:
+              namespace: 'default'
               container-registry-url: ibrakadijbra13.azurecr.io
               container-registry-username: ${{ secrets.DOCKER_USERNAME }}
               container-registry-password: ${{ secrets.DOCKER_PASSWORD }}
