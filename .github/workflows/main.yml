@@ -126,7 +126,6 @@ jobs:
 
         - uses: Azure/k8s-create-secret@v4
           with:
-              container-registry-url: docker.io
               container-registry-username: ${{ secrets.DOCKER_USERNAME }}
               container-registry-password: ${{ secrets.DOCKER_PASSWORD }}
               secret-name: demo-k8s-secret
@@ -136,7 +135,7 @@ jobs:
               action: deploy
               manifests: |
                  manifests
-              images: |
-                 ibrakadijbra13/service-a:latest
+              images: | 
+                docker.io/ibrakadijbra13/service-a:latest
               imagepullsecrets: |
                  demo-k8s-secret
