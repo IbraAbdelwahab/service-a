@@ -19,7 +19,7 @@
             "count": 3,
             "vmSize": "Standard_DS2_v2"
           }
-        ]
+        ],
         "servicePrincipalProfile": {
           "clientId": "msi"
         }
