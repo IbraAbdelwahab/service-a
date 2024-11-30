@@ -13,67 +13,67 @@ on:
         default: staging
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'oracle'
+  #     - name: Set up JDK
+  #       uses: actions/setup-java@v3
+  #       with:
+  #         java-version: '17'
+  #         distribution: 'oracle'
 
-      - name: Build with Maven
-        run: mvn clean install -DskipTests
+  #     - name: Build with Maven
+  #       run: mvn clean install -DskipTests
 
-      - name: Package Maven
-        run: mvn clean package
+  #     - name: Package Maven
+  #       run: mvn clean package
 
-      - name: check directory
-        run: ls -al target
+  #     - name: check directory
+  #       run: ls -al target
 
-      - name: Upload JAR artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: built-jar
-          path: target/*.jar
+  #     - name: Upload JAR artifact
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: built-jar
+  #         path: target/*.jar
           
-      - name: Setup QEMU
-        id: qemu
-        uses: docker/setup-qemu-action@v3
+  #     - name: Setup QEMU
+  #       id: qemu
+  #       uses: docker/setup-qemu-action@v3
 
-      - name: Setup Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v3
+  #     - name: Setup Buildx
+  #       id: buildx
+  #       uses: docker/setup-buildx-action@v3
         
-      - name: check directory
-        run: ls -R
+  #     - name: check directory
+  #       run: ls -R
         
-      - name: Docker Login
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+  #     - name: Docker Login
+  #       uses: docker/login-action@v2
+  #       with:
+  #         username: ${{ secrets.DOCKER_USERNAME }}
+  #         password: ${{ secrets.DOCKER_PASSWORD }}
           
-      - name: Login to ACR
-        uses: docker/login-action@v3
-        with:
-          registry: ibrakadijbra13.azurecr.io
-          username: ${{ secrets.AZ_APPID }}
-          password: ${{ secrets.AZURE_CLIENT_SECRET }}
+  #     - name: Login to ACR
+  #       uses: docker/login-action@v3
+  #       with:
+  #         registry: ibrakadijbra13.azurecr.io
+  #         username: ${{ secrets.AZ_APPID }}
+  #         password: ${{ secrets.AZURE_CLIENT_SECRET }}
           
-      - name: Build Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: >
-            ibrakadijbra13/service-a:latest,
-            ibrakadijbra13/service-a:${{ github.sha }},
-            ibrakadijbra13.azurecr.io/service-a:${{ github.sha }}
+  #     - name: Build Docker image
+  #       uses: docker/build-push-action@v6
+  #       with:
+  #         context: .
+  #         file: ./Dockerfile
+  #         push: true
+  #         tags: >
+  #           ibrakadijbra13/service-a:latest,
+  #           ibrakadijbra13/service-a:${{ github.sha }},
+  #           ibrakadijbra13.azurecr.io/service-a:${{ github.sha }}
             
       
            
