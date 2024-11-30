@@ -6,6 +6,9 @@
       "type": "Microsoft.ContainerService/managedClusters",
       "apiVersion": "2023-02-01",
       "name": "myAKSCluster",
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "location": "italynorth",
       "properties": {
         "kubernetesVersion": "1.24.6",
@@ -17,6 +20,9 @@
             "vmSize": "Standard_DS2_v2"
           }
         ]
+        "servicePrincipalProfile": {
+          "clientId": "msi"
+        }
       }
     }
   ]
