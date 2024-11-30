@@ -95,7 +95,6 @@ jobs:
       with:
         resourceGroupName: ${{ env.ResourceGroupName }}
         template: ./arm-template.json
-        parameters: storageAccountType=Standard_LRS
         
   deploy_to_kubernetes:
     runs-on: ubuntu-latest
