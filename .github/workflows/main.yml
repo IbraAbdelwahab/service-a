@@ -77,7 +77,7 @@ jobs:
       contents: read
     env:
       ResourceGroupName: github-action-arm-rg
-      ResourceGroupLocation: "italynorth"
+      ResourceGroupLocation: "eastus"
     steps:
     - uses: actions/checkout@master
     - uses: azure/login@v2
