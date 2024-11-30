@@ -132,7 +132,7 @@ jobs:
           with:
               action: deploy
               manifests: |
-                 ./manifests
+                 manifests
               images: |
                  ibrakadijbra13/service-a:${{ github.sha }}
               imagepullsecrets: |
