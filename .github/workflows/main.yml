@@ -61,7 +61,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ibrakadijbra13.azurecr.io
-          username: ${{ vars.AZ_APPID }}
+          username: ${{ secrets.AZ_APPID }}
           password: ${{ secrets.AZURE_CLIENT_SECRET }}
           
       - name: Build Docker image
