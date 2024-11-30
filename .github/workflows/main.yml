@@ -137,6 +137,6 @@ jobs:
               manifests: |
                  manifests
               images: |
-                 ibrakadijbra13/service-a:${{ github.sha }}
+                 ibrakadijbra13/service-a:latest
               imagepullsecrets: |
                  demo-k8s-secret
