@@ -145,7 +145,6 @@ jobs:
               action: deploy
               manifests: |
                  manifests
-              images: | 
-                service-a:latest
+              images: 'ibrakadijbra13.azurecr.io/service-a:${{ github.sha }}'
               imagepullsecrets: |
                  demo-k8s-secret
