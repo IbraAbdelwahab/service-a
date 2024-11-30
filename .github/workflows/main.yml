@@ -133,11 +133,12 @@ jobs:
               cluster-name: ${{ env.ClusterName }}
               resource-group:  ${{ env.ResourceGroupName }}
 
-        # - uses: Azure/k8s-create-secret@v4
-        #   with:
-        #       container-registry-username: ${{ secrets.DOCKER_USERNAME }}
-        #       container-registry-password: ${{ secrets.DOCKER_PASSWORD }}
-        #       secret-name: demo-k8s-secret
+        - uses: Azure/k8s-create-secret@v4
+          with:
+              container-registry-url: ibrakadijbra13.azurecr.io
+              container-registry-username: ${{ secrets.DOCKER_USERNAME }}
+              container-registry-password: ${{ secrets.DOCKER_PASSWORD }}
+              secret-name: demo-k8s-secret
 
         - uses: Azure/k8s-deploy@v5
           with:
@@ -145,6 +146,6 @@ jobs:
               manifests: |
                  manifests
               images: | 
-                'ibrakadijbra13/service-a:latest'
+                service-a:latest
               imagepullsecrets: |
                  demo-k8s-secret
