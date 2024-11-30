@@ -136,6 +136,6 @@ jobs:
               manifests: |
                  manifests
               images: | 
-                docker.io/ibrakadijbra13/service-a:latest
+                'ibrakadijbra13/service-a:latest'
               imagepullsecrets: |
                  demo-k8s-secret
