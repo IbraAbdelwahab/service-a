@@ -76,7 +76,7 @@ jobs:
       id-token: write
       contents: read
     env:
-      ResourceGroupName: github-action-arm-rg
+      ResourceGroupName: github-devops-test
       ResourceGroupLocation: "eastus"
     steps:
     - uses: actions/checkout@master
