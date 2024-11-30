@@ -11,7 +11,7 @@
       },
       "location": "eastus",
       "properties": {
-        "kubernetesVersion": "1.29.9",
+        "kubernetesVersion": "1.29.10",
         "dnsPrefix": "aksdns",
         "agentPoolProfiles": [
           {
