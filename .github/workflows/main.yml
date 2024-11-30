@@ -107,6 +107,9 @@ jobs:
         ClusterName: myAKSCluster
       # needs: [build, deploy_infrastructure]
       steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+          
         - uses: azure/setup-kubectl@v4
 
         - uses: azure/login@v2
