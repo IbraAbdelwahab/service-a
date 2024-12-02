@@ -28,8 +28,8 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -DskipTests
 
-      - name: Package Maven
-        run: mvn clean package
+      # - name: Package Maven
+      #   run: mvn clean package
           
       - name: Setup QEMU
         id: qemu
